@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Users</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        .users th {
+            border: 2px solid black;
+        }
+
+        .users td {
+            border: 1px solid black;
+        }
+
+        h1 {
+            border-bottom: 4px solid grey;
+            width: 300px;
+        }
+
+        .add-user {
+            margin-left: 80px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('form').submit(function () {
+                $('.users').append(
+                `
+                <tr>
+                    <td>${$('#first_name').val()}</td>
+                    <td>${$('#last_name').val()}</td>
+                    <td>${$('#email').val()}</td>
+                    <td>${$('#phone').val()}</td>
+                </tr>
+                `
+                );
+                return false;
+            })
+            $('.btn').click(function () {
+                $('#form1').submit();
+                console.log('you submitted')
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <table class="users">
+        <thead>
+            <tr class="header">
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email Address</th>
+                <th>Contact #</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Billy-Bob</td>
+                <td>Thorton</td>
+                <td>bobby@badsanta.com</td>
+                <td>(555)555-5555</td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>Add User</h1>
+    <form action="process.php" method="post" class="add-user" id="form1">
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <!-- first name_input -->
+                        <label for="first_name">First Name:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="first_name" placeholder="first name" name="first_name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <!-- last name_input -->
+                        <label for="last_name">Last Name:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="last_name" placeholder="last name" name="last_name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <!-- Email: -->
+                        <label for="email">Email:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="email" placeholder="email" name="email">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <!-- Phone#: -->
+                        <label for="phone">Contact No.:</label>
+                    </td>
+                    <td>
+                        <input type="text" id="phone" placeholder="Phone #" name="phone">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+    <button class="btn">Click me to use .submit() differently</button>
+</body>
+
+</html>
